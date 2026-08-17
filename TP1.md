@@ -15,7 +15,11 @@
 <img width="982" height="292" alt="image" src="https://github.com/user-attachments/assets/79148803-47d6-4ce6-ae87-e06ee9c97e6b" />
 
   a).Se puede observar 2 elementos, la onda seno que es periódica presenta una longitud de onda de 60 mm y la linea roja punteada nos muestra la atenuación de la señal (perdida de intensidad) a medida que la onda se propaga.
+
+  
   b). La longitud de onda λ obtenido desde el grafico es 60 mm y considerando que la onda viaja a la velocidad de la luz c, la frecuencia se obtiene con la relacion f=c/λ, entonces f = 5x10^9 hz = 5Ghz.
+
+  
   c). Una frecuencia de 5 GHz pertenece a la región de las ondas de radiofrecuencia (RF), específicamente dentro de la región de las microondas. Según la clasificación de la ITU, opera en la banda SHF (Super High Frequency / Súper Alta Frecuencia), cuyo rango comprende desde 3 GHz hasta 30 GHz.
 
 

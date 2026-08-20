@@ -24,6 +24,24 @@
   c). Una frecuencia de 5 GHz pertenece a la región de las ondas de radiofrecuencia (RF), específicamente dentro de la región de las microondas. Según la clasificación de la ITU, opera en la banda SHF (Super High Frequency / Súper Alta Frecuencia), cuyo rango comprende desde 3 GHz hasta 30 GHz.
 
 
+  d) En la banda de 5 GHz operan diversos dispositivos de comunicación de datos que requieren altas tasas de transferencia, aunque con menor alcance frente a obstáculos. Por ejemplo un router Wi-Fi de doble banda (que utilice estándares como 802.11n, 802.11ac o 802.11ax). También operan en esta banda algunos teléfonos inalámbricos, enlaces de radio punto a punto, sistemas de radar meteorológico y dispositivos de transmisión de video inalámbrico.
+
+
+e) La línea de trazos roja representa la atenuación de la señal. Este fenómeno consiste en la pérdida de intensidad (o amplitud) de la onda electromagnética a medida que se propaga a través de la distancia.
+
+
+f) Sí, la atenuación afecta directamente a los routers Wi-Fi de 5 GHz. Esto es fácilmente observable cuando te alejas del router Wi-Fi. A medida que caminas hacia otra habitación, cruzas pasillos o subes a otro piso (donde la señal debe atravesar paredes y techos), el ícono de Wi-Fi en tu celular pierde "rayitas". La velocidad de navegación se reduce y, si la atenuación es excesiva, el dispositivo se desconecta por completo de la red.
+
+
+g)
+i) Sí. Las ondas de radio que conectan tu teléfono con las antenas celulares sufren atenuación por la distancia en el aire, así como por obstáculos físicos (edificios, árboles, montañas) e incluso por factores climáticos como la lluvia.
+
+ii) Sí. A medida que la señal eléctrica viaja por el cobre del cable coaxial, pierde energía en forma de calor debido a la resistencia del conductor y a las fugas en el material dieléctrico aislante. Por esto, las redes de cable requieren amplificadores cada cierta distancia.
+
+iii) Sí. Aunque la fibra óptica es el medio guiado que sufre la menor atenuación, la señal luminosa sigue perdiendo intensidad a lo largo de grandes distancias debido a impurezas en el vidrio (que absorben la luz) y a la dispersión. En enlaces submarinos o de cientos de kilómetros, se requieren repetidores ópticos para regenerar la señal.
+
+
+
 
 ## 2. 
 a) ![Referencia para el ejercicio a](img/Img-para-ej-2a.png) 

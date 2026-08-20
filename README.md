@@ -2,8 +2,6 @@
 
 Repositorio destinado a la entrega de los Trabajos Prácticos de la materia **Redes de Computadoras** de la **Facultad de Ciencias Exactas, Físicas y Naturales — Universidad Nacional de Córdoba (UNC)**.
 
-## 📚 Trabajos Prácticos
-
 En este repositorio se encuentran las distintas actividades realizados durante el cursado de la materia **Redes de Computadoras — 2026**.
 
 ## 📚 Trabajos Prácticos

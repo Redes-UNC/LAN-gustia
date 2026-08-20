@@ -2,12 +2,13 @@
 ### **Grupo:** LAN-gustia 
 ---
 ### Integrantes: 
-* 
-* 
-* 
-* 
-* 
-* 
+* Alvarado, Jazmin
+* Aroca Bustos, Nahuel Ezequiel 
+* Ibarra, Franco Ismael
+* Lucero, Fabricio Agustin
+* Soto, Milton Joaquin
+* Zulaica, Federico
+
 ---
 ###  Desarrollo
 
@@ -25,6 +26,27 @@
 
 
 ## 2. 
+a) ![Referencia para el ejercicio a](img/Img-para-ej-2a.png) 
+Según la direccionalidad, el modo de transmisión es **Simplex**, o unidireccional, ya que las flechas van en un solo sentido, desde el módulo de comunicación del emisor hacia el módulo del receptor.
+
+Y según las características temporales, el tipo de transmisión es **sincrónica**. Esto significa que los dos módulos de comunicación, emisor y receptor, están sincronizados por la misma señal de reloj.
+
+b) No, no es el mejor paradigma para transmitir datos de forma rápida y bidireccional.
+
+Como se menciona en el punto anterior, al ser una transmisión **Simplex**, la comunicación viaja en un solo sentido. Por lo tanto, para una transmisión bidireccional, la mejor opción es **Full-duplex**, la cual permite que ambos dispositivos puedan transmitir y recibir simultáneamente. Como segunda opción, se encuentra **Half-duplex**, pero en este caso la transmisión en ambos sentidos no puede realizarse de forma simultánea.
+
+c) La 4ta letra del nombre de nuestro grupo es la **"g"**, por lo que le corresponde el número **103** en código ASCII y **01100111** en binario.
+
+La representación en el gráfico sería la siguiente:
+
+![Representación de letra g](img/Ejercicio2c.png)
+
+d) ![Referencia para el ejercicio d](img/Img-para-ej-2d.png)
+
+Para determinar el valor digital, mediría la señal en las marcas temporales que se encuentran en el centro de cada bit, es decir, en los **T pares** (T0, T2, T4, ...), que es cuando la señal ya es estable.
+
+No se debería medir durante el cambio de nivel, ya que la pendiente de la señal puede producir un valor de tensión intermedio y modificar el valor real.
+
 ## 3. 
 
   a) La tecnica de modulacion que esta utiliazando en este caso es modulacion por desplazamiento de fase, ya que podemos ver que la fase se invierte cuando hay un cambio en el bit de datos.

@@ -24,7 +24,7 @@
   c). Una frecuencia de 5 GHz pertenece a la región de las ondas de radiofrecuencia (RF), específicamente dentro de la región de las microondas. Según la clasificación de la ITU, opera en la banda SHF (Super High Frequency / Súper Alta Frecuencia), cuyo rango comprende desde 3 GHz hasta 30 GHz.
 
 
-  d) En la banda de 5 GHz operan diversos dispositivos de comunicación de datos que requieren altas tasas de transferencia, aunque con menor alcance frente a obstáculos. Por ejemplo un router Wi-Fi de doble banda (que utilice estándares como 802.11n, 802.11ac o 802.11ax). También operan en esta banda algunos teléfonos inalámbricos, enlaces de radio punto a punto, sistemas de radar meteorológico y dispositivos de transmisión de video inalámbrico.
+  d) En la banda de 5 GHz operan diversos dispositivos de comunicación de datos que requieren altas tasas de transferencia, aunque con menor alcance frente a obstáculos. Por ejemplo un router Wi-Fi de doble banda. También operan en esta banda algunos teléfonos inalámbricos, enlaces de radio punto a punto, sistemas de radar meteorológico y dispositivos de transmisión de video inalámbrico.
 
 
 e) La línea de trazos roja representa la atenuación de la señal. Este fenómeno consiste en la pérdida de intensidad (o amplitud) de la onda electromagnética a medida que se propaga a través de la distancia.

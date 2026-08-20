@@ -27,6 +27,14 @@
 ## 2. 
 ## 3. 
 
+  a) La tecnica de modulacion que esta utiliazando en este caso es modulacion por desplazamiento de fase, ya que podemos ver que la fase se invierte cuando hay un cambio en el bit de datos.
+
+  b) ![alt text](img/Ejercicio3b.png)
+
+
+  c) Otras tecnicas de modulacion que se mencionan en el libro de Stallings  pueden ser modulación por desplazamiento de amplitud  y modulación por desplazamiento de frecuencia dentro de la cual se encuentran BFSK (Binary Frequency-Shift Keying) y MFSK (Multiple Frequency-Shift Keying)
+
+  d)El Bit Error Rate es la probabilidad de que un bit transmitido llegue de forma errónea al receptor. Cuanto mayor es la relación señal-ruido menor es el BER. La tecnica que nos da mejores prestaciones es modulacion por desplazamiento de fase (PSK) ya que tiene mejor eficiencia del ancho de banda
 
 ## 4. Simulación en Cisco Packet Tracer 
 

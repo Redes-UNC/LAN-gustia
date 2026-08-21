@@ -58,10 +58,11 @@ No necesariamente forma parte de la información que se desea transmitir. Genera
 
 ## 4.d. 
 El protocolo puede determinar dónde termina una trama mediante:
-Longitud fija: Todas las tramas tienen un tamaño previamente establecido. El receptor sabe de antemano cuántos bits o bytes debe recibir para completar una trama.
 
-Campo de longitud: La trama contiene un campo dentro de su encabezado que indica su longitud. El receptor lee este valor y sabe cuántos bytes pertenecen a la trama.
+* Longitud fija: Todas las tramas tienen un tamaño previamente establecido. El receptor sabe de antemano cuántos bits o bytes debe recibir para completar una trama.
 
-Secuencia delimitadora: Se utiliza una secuencia especial de bits o caracteres para indicar el comienzo o el final de una trama. Cuando el receptor encuentra dicha secuencia, interpreta que la trama ha finalizado.
+* Campo de longitud: La trama contiene un campo dentro de su encabezado que indica su longitud. El receptor lee este valor y sabe cuántos bytes pertenecen a la trama.
+
+* Secuencia delimitadora: Se utiliza una secuencia especial de bits o caracteres para indicar el comienzo o el final de una trama. Cuando el receptor encuentra dicha secuencia, interpreta que la trama ha finalizado.
 
 # 5.

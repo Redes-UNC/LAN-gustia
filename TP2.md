@@ -5,12 +5,12 @@
 ---
 
 ## Integrantes
-*
-*
-*
-*
-*
-*
+* Alvarado, Jazmin
+* Aroca Bustos, Nahuel Ezequiel
+* Ibarra, Franco Ismael
+* Lucero, Fabricio Agustin
+* Soto, Milton Joaquin
+* Zulaica, Federico
 
 ---
 
@@ -51,5 +51,17 @@ Es la informacion que realmente se quiere transmitir.
 ### Trailer:
 
 Aparece al final de la trama y contiene informacion adicional necesaria para el control y la verificacion de la transmision. Por ejemplo, informacion de control de errores, etc.
+
+## 4.c.
+El preámbulo es una secuencia de bits que se coloca antes de una trama y que permite al receptor prepararse para recibirla. Entre sus funciones se encuentran la sincronización entre el transmisor y el receptor y la identificación del comienzo de una trama.
+No necesariamente forma parte de la información que se desea transmitir. Generalmente se utiliza como información de control, necesaria para que el receptor pueda detectar y procesar correctamente la trama antes de recibir los datos propiamente dichos.
+
+## 4.d. 
+El protocolo puede determinar dónde termina una trama mediante:
+Longitud fija: Todas las tramas tienen un tamaño previamente establecido. El receptor sabe de antemano cuántos bits o bytes debe recibir para completar una trama.
+
+Campo de longitud: La trama contiene un campo dentro de su encabezado que indica su longitud. El receptor lee este valor y sabe cuántos bytes pertenecen a la trama.
+
+Secuencia delimitadora: Se utiliza una secuencia especial de bits o caracteres para indicar el comienzo o el final de una trama. Cuando el receptor encuentra dicha secuencia, interpreta que la trama ha finalizado.
 
 # 5.

@@ -17,6 +17,32 @@
 ## Desarrollo
 
 # 1. 
+![alt text](<img/figura p1.png>)
+
+## 1.a 
+El fenómeno que se está representando en el gráfico es el "Efecto Doppler", esto lo podemos saber gracias a que si observamos la onda en el dibujo, notamos que cerca del barco los picos están más separados (mayor longitud de onda), pero a medida que se acercan al satélite, los picos se "aprietan" o comprimen (menor longitud de onda).
+
+## 1.b 
+Las bandas más afectadas por el efecto doppler son Las bandas de alta frecuencia (como **SHF o EHF**, usadas justamente para enlaces satelitales) sufren el impacto más severo. El desfasaje o error de frecuencia ($\Delta f$) que sufre la señal se calcula multiplicando la frecuencia original ($f_0$) por la velocidad relativa entre los equipos ($v$) dividida la velocidad de propagación ($c$):
+
+$$\Delta f = f_0 \left( \frac{v}{c} \right)$$
+
+Como la frecuencia original ($f_0$) está multiplicando de forma directa, el error crece proporcionalmente.
+
+- Si un auto se mueve transmitiendo en una banda de baja frecuencia (ej. radio FM a $100 \text{ MHz}$), el $\Delta f$ es de apenas unos pocos hercios. El receptor ni se entera.
+- Si un satélite se mueve transmitiendo a $15 \text{ GHz}$ (alta frecuencia), el multiplicador es enorme. El corrimiento puede ser de decenas de miles de hercios. La señal se sale totalmente del canal esperado, y si el receptor intenta leer esa onda escalonada (como la que graficaron en el TP1) en los tiempos equivocados, va a decodificar ruido y basura en lugar de unos y ceros.
+
+Las más resilientes son las transmisiones en bajas frecuencias (**VHF o la parte baja de UHF**). Son inherentemente inmunes a grandes estragos porque sus longitudes de onda son inmensas (metros o kilómetros). El desfase que sufren es numéricamente despreciable para la mayoría de las aplicaciones terrestres.
+
+## 1.c 
+La prohibición de usar celulares en vuelo se originó por precaución ante posibles interferencias con los instrumentos de navegación. Sin embargo, desde el punto de vista de las telecomunicaciones terrestres, el Efecto Doppler y la altitud son el gran problema:
+
+- **Velocidad extrema:** Un avión comercial viaja a unos 900 km/h. A esa velocidad, el Efecto Doppler de la onda electromagnética que el celular envía hacia la antena en tierra es muy alto. Las redes celulares convencionales están diseñadas para tolerar y corregir el Doppler que genera un auto moviéndose por la autopista, no un avión.
+
+- **Línea de visión:** Al volar a miles de metros de altura, no hay edificios ni montañas. Tu celular de repente tiene línea de visión directa con decenas o cientos de celdas celulares en distintas ciudades al mismo tiempo.
+
+- **Saturación:** Sumando el rápido cambio de frecuencia por el Doppler y la altitud, el teléfono, al no entender bien la geometría de la red, transmite a máxima potencia intentando conectarse y registrarse en todas las torres a la vez. Esto genera un "ping-pong" que satura los recursos y el enrutamiento de la red móvil en tierra.
+
 
 # 2. 
 

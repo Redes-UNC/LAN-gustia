@@ -45,6 +45,25 @@ La prohibición de usar celulares en vuelo se originó por precaución ante posi
 
 
 # 2. 
+![alt text](<img/FiguraP2.png>)
+
+## 2.a
+El fenómeno físico que se está representando se denomina “Ruido impulsivo”.
+
+Este fenómeno es discontinuo y está constituido por pulsos o picos de corta duración con una amplitud relativamente alta. Es provocado por eventos electromecánicos o transitorios bruscos (en la figura, las chispas y arrastres del motor de la herramienta del operario). Constituye una de las principales causas de error en la comunicación digital de datos, ya que un solo pico de alta energía altera un bloque entero de bits;  en cambio, en la transmisión analógica solo genera una pequeña degradación o chasquido imperceptible sin mayor trascendencia.
+
+## 2.b
+Este fenómeno afecta más a las transmisiones de bandas bajas y medias de la ITU (ELF a HF/VHF, por convivir con maquinaria cerca del suelo), sistemas de banda angosta (el pulso concentra más energía dentro del canal) y cables de cobre sin blindaje.
+
+Las transmisiones más resilientes son las de bandas altas de la ITU (SHF/EHF, con enlaces directivos y alejados del suelo), sistemas de banda ancha (el impacto se diluye en el ancho de banda), medios apantallados y la fibra óptica (totalmente inmune por transmitir luz).
+
+## 2.c
+La SNR (Signal-to-Noise Ratio) se define como el cociente de la potencia de la señal entre la potencia del ruido presente en un punto determinado en el medio de transmisión. Generalmente, este cociente se mide en el receptor, ya que es aquí donde se realiza el procesado de la señal y la eliminación del ruido no deseado. Por cuestiones de comodidad,la SNR se expresa en decibelios(dB):
+
+$$SNR_{dB} = 10 \log_{10} \frac{\text{potencia de señal}}{\text{potencia de ruido}}$$
+
+La SNR está relacionado directamente con el BER (Bit Error Rate), que es la proporción de bits erróneos recibidos respecto al total de bits transmitidos en un canal digital. El vínculo entre ambos es inversamente proporcional: una alta SNR le permite al receptor diferenciar la información del ruido, reduciendo la tasa de errores (menor BER). En cambio, cuando la SNR cae por un incremento en el ruido, el receptor confunde los estados de la señal y la probabilidad de alterar un bit aumenta, elevando consecuentemente el BER. 
+
 
 # 3. 
 

@@ -110,4 +110,34 @@ El protocolo puede determinar dónde termina una trama mediante:
 
 * Secuencia delimitadora: Se utiliza una secuencia especial de bits o caracteres para indicar el comienzo o el final de una trama. Cuando el receptor encuentra dicha secuencia, interpreta que la trama ha finalizado.
 
-# 5.
+# 5.a.
+Podemos identificar el nombre de nuestro grupo en la secuencia 6C 61 6E 2D 67 traduciendo estos valores al ASCII, luego de eso tenemos el número de secuencia siendo el nuestro 0D o pasándolo a decimal el número  13, luego podemos ver la longitud del payload siendo este 02 osea dos bytes que tenemos a continuación que es 79 y 6F siendo este traducido da como payload la cadena de caracteres yo
+
+# 5.b.
+Para reconstruir la informacion primero tendremos que ir acomodando los grupos:
+
+#hidd con el payload ht con el orden de secuencia 1 
+aurac con el payload t con el orden de secuencia 2
+click con el payload s: con el orden de secuencia 4 
+death con el payload / con el orden de secuencia 5
+grupo con el payload w con el orden de secuencia 8
+la la con el payload w. con el orden de secuencia 9
+lan-g con el payload yo con el orden de secuencia 13 
+los r con el payload ut con el orden de secuencia 11
+los s con el payload ub con el orden de secuencia 12
+los-t con el payload c con el orden de secuencia 14
+lost- con el payload o con el orden de secuencia 15
+macac con el payload m/s con el orden de secuencia 16
+milan con el payload ho con el orden de secuencia 17
+netru aparece dos veces una vez con un payload r con el orden de secuencia  18 y luego con el payloar ts y el orden de secuencia 19
+ping con el payload db con el orden de secuencia 21
+red h con el payload be con el orden de secuencia 22
+tcpan con el payload _l con el orden de secuencia 23
+wan-d con el payload n6 y el orden de secuencia de 24
+wireg con el payload Lnw con el orden de secuencia 25
+panda con el payload / con el orden de secuencia 20
+group con el payload w con el orden de secuencia 32
+bitbr con el payload p con el orden de secuencia 3
+los_c con el payload e. con el orden de secuencia 13
+
+Revisando el orden de secuencia podemos ver que hay algunos que se repiten entonces no podriamos armar correctamente la cadena de caracteres

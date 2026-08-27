@@ -65,7 +65,13 @@ $$SNR_{dB} = 10 \log_{10} \frac{\text{potencia de señal}}{\text{potencia de rui
 La SNR está relacionado directamente con el BER (Bit Error Rate), que es la proporción de bits erróneos recibidos respecto al total de bits transmitidos en un canal digital. El vínculo entre ambos es inversamente proporcional: una alta SNR le permite al receptor diferenciar la información del ruido, reduciendo la tasa de errores (menor BER). En cambio, cuando la SNR cae por un incremento en el ruido, el receptor confunde los estados de la señal y la probabilidad de alterar un bit aumenta, elevando consecuentemente el BER. 
 
 
-# 3. 
+# 3.
+
+**Sobre el ruido en el canal:** Los sistemas digitales ayudan agregando bits de redundancia a la transmisión. Gracias a estos códigos, el receptor puede identificar si la señal llegó con errores debido al ruido y corregirlos por su cuenta, sin necesidad de pedir una retransmisión.
+
+**Sobre los cambios en la frecuencia:** Para compensar esto, el receptor utiliza técnicas de procesamiento para sincronizarse con la señal. Va estimando las variaciones de frecuencia del canal y ajusta su referencia, utilizando recuperación de portadora y ecualización, para recuperar los símbolos sin perder la información.
+
+Por lo tanto, la redundancia ayuda frente al ruido, mientras que la sincronización y el procesamiento de la señal sirven contra las variaciones de frecuencia.
 
 # 4. Interpretacion de la informacion y tramas
 

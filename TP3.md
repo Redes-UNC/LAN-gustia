@@ -63,3 +63,17 @@ Sus campos principales, en orden, son:
 La información que permite a la tarjeta de red saber a qué protocolo superior debe entregar los datos es el campo Tipo **(EtherType)** mencionado anteriormente.
 
 Este campo de 2 bytes contiene un código hexadecimal estandarizado. Al leerlo, el receptor sabe cómo debe procesar la carga útil. Por ejemplo, si el campo EtherType tiene el valor 0x0800, el hardware sabe que está transportando un paquete IPv4 y lo envía al software correspondiente; si el valor es 0x0806, sabrá que es un paquete ARP (Protocolo de Resolución de Direcciones).
+
+
+
+
+## 4
+La consigna nos indica conectarnos a un servidor indicado por el profe y se nos indica documentar la respuesta del server. La respuesta del server varia dependiendo del ascci que le mandes como se puede ver en las capturas de pantalla, en el caso del nombre de nuestro grupo respondio lo siguiente:
+seq: 11, payload: e
+
+
+![alt text](img/4b.png)
+
+![alt text](img/4c.png)
+
+![alt text](img/4d.png)

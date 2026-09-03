@@ -64,8 +64,31 @@ La información que permite a la tarjeta de red saber a qué protocolo superior 
 
 Este campo de 2 bytes contiene un código hexadecimal estandarizado. Al leerlo, el receptor sabe cómo debe procesar la carga útil. Por ejemplo, si el campo EtherType tiene el valor 0x0800, el hardware sabe que está transportando un paquete IPv4 y lo envía al software correspondiente; si el valor es 0x0806, sabrá que es un paquete ARP (Protocolo de Resolución de Direcciones).
 
+# 3.
 
+## 3.a
+TCP (Transmition Control Protocol) se encarga de proporcionar una comunicacion confiable y orientada a conexion entre dos dispositivos.
+Ni ethernet ni IP garantizan por si mismo que los datos lleguen correctamente y en el orden en que fueron enviados.
+Los problemas que resuelve TCP son:
+* **Perdida de paquetes**: TCP puede detectar que determinados datos no fueron recibidos y solicitar su retransmision.
+* **Entrega ordenada**: Los segmentos pueden llegar en un orden diferente al que fueron enviados. TCP utiliza numeros de secuencia para reconstruir los datos en el orden correcto.
+* **Deteccion de errores**: TCP utiliza checksum (suma de verificacion) para detectar si un segmento fue alterado durante la transmision.
+* **Control de flujo**: TCP evita que un emisor envie datos a una velocidad superior a la que el receptor puede procesar.
+* **Control de congestion**: TCP adapta la velocidad de transmision cuando detecta que existe congestion en la red.
+* **Establecimiento y finalizacion de la conexion**: TCP establece una conexion mediante Three-Way Handshake antes de enviar datos y la finaliza cuando termina la comunicacion.
 
+## 3.b
+Los principales campos de la cabecera TCP son:
+* **Source port**: Identifica al puerto de origen del segmento.
+* **Destination port**: Identifica al puerto de destino del segmento.
+* **Sequence number**: Permite ordenar los datos y detectar segmentos faltantes o duplicados.
+* **Acknowledgement number**: Indica que datos fueron recibidos y cual es el siguiente numero de secuencia esperado.
+* **Header length**: Indica el tamaño de la cabecera TCP.
+* **Flags**: Indica diferentes estados y funciones del segmento, como SYN, ACK, FIN, RST, PSH y URG.
+* **Window size**: Identifica al tamaño de la ventana del segmento.
+* **Checksum**: Identifica a la suma de verificación del segmento.
+* **Urgent pointer**: Indica la ubicacion de datos urgentes cuando se utiliza el flag URG.
+* **Options**: Permite incorporar funcionalidades adicionales, como MSS, Window Scale y SACK.
 
 ## 4
 La consigna nos indica conectarnos a un servidor indicado por el profe y se nos indica documentar la respuesta del server. La respuesta del server varia dependiendo del ascci que le mandes como se puede ver en las capturas de pantalla, en el caso del nombre de nuestro grupo respondio lo siguiente:

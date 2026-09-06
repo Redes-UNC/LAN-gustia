@@ -63,6 +63,21 @@ Sus campos principales, en orden, son:
 La información que permite a la tarjeta de red saber a qué protocolo superior debe entregar los datos es el campo Tipo **(EtherType)** mencionado anteriormente.
 
 Este campo de 2 bytes contiene un código hexadecimal estandarizado. Al leerlo, el receptor sabe cómo debe procesar la carga útil. Por ejemplo, si el campo EtherType tiene el valor 0x0800, el hardware sabe que está transportando un paquete IPv4 y lo envía al software correspondiente; si el valor es 0x0806, sabrá que es un paquete ARP (Protocolo de Resolución de Direcciones).
+# 2.
+
+<img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/d0f09f61-30d1-451f-93ff-0c79876a8f3a" />
+
+## 2.a
+La dirección MAC de origen es 84:5c:f3:5a:1d:79 que es correspondiente a la interfaz de red de la computadora desde la cual se hizo la captura. La dirección MAC de destino es 44:d4:54:b7:d3:a4, correspondiente al router o punto de acceso de la red local.
+
+## 2.b
+La dirección IP de origen es 192.168.0.215 y la dirección IP de destino es 103.88.232.71
+
+## 2.c
+No representan lo mismo. La dirección IP permite identificar el destino y realizar el encaminamiento de los datos entre diferentes redes, mientras que la dirección MAC se utiliza para identificar la interfaz dentro de la red local. En la captura se observa que la dirección MAC de destino corresponde al dispositivo de la red local, mientras que la dirección IP de destino corresponde al destino final de la comunicación.
+
+## 2.d
+El campo EtherType tiene el valor 0x0800, que indica que el protocolo encapsulado dentro de la trama Ethernet es IPv4.
 
 # 3.
 

@@ -119,6 +119,32 @@ Four-way Handshake (Terminando la conexión)
 
 Iniciamos una instancia de PacketSender como servidor TCP, tomando nota del puerto asignado (54483), y otra instancia como cliente apuntando a localhost (127.0.0.1) y ese puerto. Configuramos Wireshark para capturar la interfaz de loopback con el filtro tcp.port == 54483.
 
+| Servidor PacketSender | Cliente PacketSender |
+| :---: | :---: |
+| ![Servidor](./img/3.c.1.jpeg) | ![Cliente](./img/3.c.2.jpeg) |
+
+## 3.d
+Se selecciono el paquete N°4 en Wireshark, correspondiente a la transmisión del mensaje desde el cliente hacia el servidor. Presenta los flags [PSH, ACK], indicando que la capa de transporte entrega la información de inmediato a la aplicación receptora.
+
+* **Análisis de estructura**:
+
+  * **Capa de enlace (Null/Loopback)**: Registra el paso de datos a través de la interfaz virtual local (127.0.0.1)
+  *  **Capa de red (Internet Protocol Version 4)**:
+      * **IP Origen (src)**: 127.0.0.1
+      * **IP Destino (dst)**: 127.0.0.1
+  * **Capa de transporte (Transmission Control Protocol)**:
+      * **Puerto Origen:** 55300 (puerto asignado al cliente)
+      * **Puerto Destino:** 54483 (puerto del servidor)
+      * **Longitud del segmento (Len):** 4 bytes
+* **Identificación de la Carga Útil (Payload)**:
+
+    Al revisar el volcado de bytes en la parte inferior de Wireshark, se identificaron los datos transmitidos:
+* **Código Hexadecimal:** 68 6f 6c 61
+* **Representación ASCII:** **hola**
+
+| Cabecera TCP y Puertos | Carga Útil Resaltada |
+| :---: | :---: |
+| ![Cabecera TCP](./img/3.d.2.jpeg) | ![Data Payload](./img/3.d.1.jpeg) |
 
 ## 4
 La consigna nos indica conectarnos a un servidor indicado por el profe y se nos indica documentar la respuesta del server. La respuesta del server varia dependiendo del ascci que le mandes como se puede ver en las capturas de pantalla, en el caso del nombre de nuestro grupo respondio lo siguiente:

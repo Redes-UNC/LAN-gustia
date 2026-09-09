@@ -105,6 +105,21 @@ Los principales campos de la cabecera TCP son:
 * **Urgent pointer**: Indica la ubicacion de datos urgentes cuando se utiliza el flag URG.
 * **Options**: Permite incorporar funcionalidades adicionales, como MSS, Window Scale y SACK.
 
+## 3.c
+Three-Way Handshake (Establecimiento de la conexión)
+* **SNY (Sincronización)**: El cliente manda un paquete con el flag SYN en 1, preguntando si esta disponible para conectar.
+* **SNY + ACK**: El servidor responde con ambos flags en 1, el SYN dice que sí esta disponible para conectarse y el ACK confirma la recepción del pedido de conexión.
+* **ACK (Reconocimiento)**: El cliente confirma, se establece la conexión y pueden empezar a comunicarse.
+  
+Four-way Handshake (Terminando la conexión)
+* **Cliente (FIN):** Le comunica al servidor que no hay nada más que enviar.
+* **Servidor (ACK):** Confirma que recibió el aviso del cliente.
+* **Servidor (FIN):** Le comunica al cliente que no tiene nada más para enviarle.
+* **Cliente (ACK):** Confirma la recepción del FIN.
+
+Iniciamos una instancia de PacketSender como servidor TCP, tomando nota del puerto asignado (54483), y otra instancia como cliente apuntando a localhost (127.0.0.1) y ese puerto. Configuramos Wireshark para capturar la interfaz de loopback con el filtro tcp.port == 54483.
+
+
 ## 4
 La consigna nos indica conectarnos a un servidor indicado por el profe y se nos indica documentar la respuesta del server. La respuesta del server varia dependiendo del ascci que le mandes como se puede ver en las capturas de pantalla, en el caso del nombre de nuestro grupo respondio lo siguiente:
 seq: 11, payload: e

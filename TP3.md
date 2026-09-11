@@ -146,6 +146,24 @@ Se selecciono el paquete N°4 en Wireshark, correspondiente a la transmisión de
 | :---: | :---: |
 | ![Cabecera TCP](./img/3.d.2.jpeg) | ![Data Payload](./img/3.d.1.jpeg) |
 
+## 3.e
+
+Se finalizó la conexión persistente desde Packet Sender y se capturó la secuencia completa de cierre en Wireshark (visibles en los paquetes 8 a 11).
+
+- **Four-way Handshake (Terminando la conexión):**
+  - **[FIN, ACK] (Paquete 8):** Un extremo de la comunicación notifica que no enviará más datos y solicita cerrar la conexión.
+  - **[ACK] (Paquete 9):** El otro extremo avisa de la solicitud de cierre.
+  - **[FIN, ACK] (Paquete 10):** El segundo extremo envía su propio aviso de cierre indicando que él tampoco tiene más datos que transmitir.
+  - **[ACK] (Paquete 11):** El primer extremo confirma el último aviso, finalizando formalmente la conexión en ambas direcciones.
+
+| **Captura del Four-way Handshake en Wireshark** |
+| ----------------------------------------------- |
+| ![Fin de conexion](./img/3.e.png)             |
+
+## 3.f
+
+La conclusión principal que podemos sacar es que **los protocolos de red que transmiten información en texto plano son inseguros**, especialmente cuando se utilizan en redes compartidas o públicas. Durante la práctica pudimos comprobar que, mediante herramientas como Wireshark, es posible capturar los paquetes y visualizar el contenido de los datos que se están transmitiendo. Esto demuestra que, si no se utilizan mecanismos de seguridad, información sensible como contraseñas, credenciales o mensajes privados, puede quedar expuesta. Por este motivo, es importante utilizar protocolos que incorporen cifrado, como HTTPS/TLS, para que, aunque un paquete sea interceptado, su contenido no pueda ser leído fácilmente por terceros.
+
 ## 4
 La consigna nos indica conectarnos a un servidor indicado por el profe y se nos indica documentar la respuesta del server. La respuesta del server varia dependiendo del ascci que le mandes como se puede ver en las capturas de pantalla, en el caso del nombre de nuestro grupo respondio lo siguiente:
 seq: 11, payload: e

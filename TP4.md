@@ -97,4 +97,32 @@
 
 ## 2.n
 
-# 3.
+# 3. Simulacion de Red LAN a bordo
+
+**1. Topologia de Red**
+
+![Nombre](./img/topologia.png)
+
+**2. Configuracion Logica**
+Se segmento la red en tres areas con distintos privilegios:
+* **VLAN10 (Turista - 10.10.10.0/24):** Se aplico un ACL (LIsta de Control de Acceso) para denegar el trafico externo, limitando la conexion solo al servidor local.
+* **VLAN20 (Business - 10.10.20.0/24):** Se configuro NAT dinamico para permitir la salida a Internet y acceso al servidor.
+* **VLAN99 (Admin - 10.10.99.0/24):** Cuenta con enrutamiento y acceso total a cualquier destino.
+
+**3. Pruebas**
+
+*   **Turista:** Ping exitoso y HTTP web a `10.10.99.10`. Ping a `8.8.8.8` denegado (Destination host unreachable).
+![Nombre](./img/Turista1.png)
+![Nombre](./img/Turista2.png)
+
+*   **Business:** HTTP web a `10.10.99.10` funcional y ping exitoso a `8.8.8.8`.
+
+![Nombre](./img/Business2.png)
+![Nombre](./img/Business1.png)
+
+*   **Admin:** Pings exitosos a todos los dispositivos (servidor, Internet y PCs).
+
+![Nombre](./img/Admin.png)
+
+**4. Conclusión**
+El uso de **VLANs** permitió aislar el tráfico de los pasajeros en una misma infraestructura. Al combinar esto con NAT para la salida a Internet y ACLs para filtrar paquetes, se logró aplicar con éxito la política comercial de la aerolínea: dar internet a Business y restringir a Turista exclusivamente al entretenimiento a bordo.

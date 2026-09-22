@@ -78,8 +78,7 @@
  
 
 ## 2.e
-Se verificó el estado de las interfaces de los switches mediante el comando show ip interface brief, En SW1 y SW2, las interfaces que se encuentran utilizadas en la topología son Fa0/1 y Fa0/2. Las demás interfaces no están siendo utilizadas.
-Se deshabilitaron las interfaces que no estaban siendo utilizadas en ambos switches mediante el comando shutdown.
+Se utilizó el comando show ip interface brief para identificar las interfaces utilizadas y las que se encontraban libres. En ambos switches, Fa0/1 y Fa0/2 son las interfaces utilizadas en la topología. Las demás interfaces fueron deshabilitadas mediante el comando shutdown
 
 | sw1 |  sw2 |
  | :---: | :---: |
@@ -91,15 +90,18 @@ Se deshabilitaron las interfaces que no estaban siendo utilizadas en ambos switc
 Una vez finalizada la configuración de los switches, se guardó la configuración realizada para evitar que los cambios se pierdan al reiniciar los dispositivos.
 
 En SW1 y SW2 se utilizó write memory
-<img width="662" height="120" alt="image" src="https://github.com/user-attachments/assets/cf326285-38e3-4dd9-9554-d5f0c236e7ca" />
+
+
+|<img width="662" height="120" alt="image" src="https://github.com/user-attachments/assets/cf326285-38e3-4dd9-9554-d5f0c236e7ca" />|
 
 
 ## 2.g
 Se verificó la comunicación entre los dispositivos mediante el comando ping.
-ping desde PC-A hacia PC-B
-<img width="850" height="364" alt="image" src="https://github.com/user-attachments/assets/3f19496d-48b0-4ddb-92e2-5613fd7ef5ae" />
-ping desde PC-B hacia PC-A 
-<img width="796" height="414" alt="image" src="https://github.com/user-attachments/assets/8fe0a2cc-8622-4dab-88da-19a3495d6787" />
+
+
+ | ping desde PC-A hacia PC-B | ping desde PC-B hacia PC-A|
+ | :---: | :---: |
+ | <img width="850" height="364" alt="image" src="https://github.com/user-attachments/assets/3f19496d-48b0-4ddb-92e2-5613fd7ef5ae" /> |<img width="796" height="414" alt="image" src="https://github.com/user-attachments/assets/8fe0a2cc-8622-4dab-88da-19a3495d6787" /> |
 
 ## 2.h
 Se creo las siguientes VLANs en ambos switches. 
@@ -107,9 +109,11 @@ VLAN 10: Laboratorio
 VLAN 20: Bar
 VLAN 99: Management
 verificando la configuración mediante show vlan brief
-<img width="721" height="592" alt="image" src="https://github.com/user-attachments/assets/cc612d5a-ee5a-432c-a185-9277a8bec32b" />
-<img width="713" height="482" alt="image" src="https://github.com/user-attachments/assets/4c46d14a-6ee9-4d54-8657-c4bc48f2a120" />
 
+
+| sw1 |  sw2 |
+ | :---: | :---: |
+ |<img width="721" height="592" alt="image" src="https://github.com/user-attachments/assets/cc612d5a-ee5a-432c-a185-9277a8bec32b" /> | <img width="713" height="482" alt="image" src="https://github.com/user-attachments/assets/4c46d14a-6ee9-4d54-8657-c4bc48f2a120" /> |
 
 
 ## 2.i

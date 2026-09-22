@@ -143,6 +143,7 @@ Se segmento la red en tres areas con distintos privilegios:
 **3. Pruebas**
 
 *   **Turista:** Ping exitoso y HTTP web a `10.10.99.10`. Ping a `8.8.8.8` denegado (Destination host unreachable).
+
 ![Nombre](./img/Turista1.png)
 ![Nombre](./img/Turista2.png)
 

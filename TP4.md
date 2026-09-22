@@ -80,9 +80,10 @@
 ## 2.e
 Se verificó el estado de las interfaces de los switches mediante el comando show ip interface brief, En SW1 y SW2, las interfaces que se encuentran utilizadas en la topología son Fa0/1 y Fa0/2. Las demás interfaces no están siendo utilizadas.
 Se deshabilitaron las interfaces que no estaban siendo utilizadas en ambos switches mediante el comando shutdown.
-<img width="723" height="712" alt="image" src="https://github.com/user-attachments/assets/0fbe89f1-e327-4f17-84da-28dcd30c866a" />
-<img width="828" height="714" alt="image" src="https://github.com/user-attachments/assets/36564a10-f087-44a9-b7f1-fdf0da8cc1e3" />
 
+| sw1 |  sw2 |
+ | :---: | :---: |
+ |<img width="723" height="712" alt="image" src="https://github.com/user-attachments/assets/0fbe89f1-e327-4f17-84da-28dcd30c866a" /> | <img width="828" height="714" alt="image" src="https://github.com/user-attachments/assets/36564a10-f087-44a9-b7f1-fdf0da8cc1e3" /> |
 
 
 

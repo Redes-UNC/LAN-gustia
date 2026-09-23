@@ -117,10 +117,28 @@ verificando la configuración mediante show vlan brief
 
 
 ## 2.i
+Al utilizar el comando **show vlan brief** en la terminal de la PC-A, se obtuvo el siguiente Output: 
 
+![alt text](img/2.i_a.png)
+
+Acá se puede notar que la VLAN 1 **(identificada como default)** es la red virtual predeterminada.
 ## 2.j
+Posteriormente, Se ejecutaron los siguientes comandos en la terminal: 
+
+![alt text](img/2.j_a.png)
+
+y, como se puede apreciar, la PC-A ahora está asignada de manera estática a la **VLAN 10 "laboratorio"**
+
+![alt text](img/2.j_b.png)
 
 ## 2.k
+Al remover la dirección IP de administración **(192.168.1.11)** de la VLAN 1 nativa. Dicha dirección fue trasladada a la interfaz virtual de la VLAN 99, como se puede ver a continuación: 
+
+
+| comando utilizado |  resultado por consola |
+ | :---: | :---: |
+ |![alt text](img/2.k_a.png) | ![alt text](img/2.k_b.png) |
+
 
 ## 2.l
 

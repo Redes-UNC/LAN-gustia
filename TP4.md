@@ -140,12 +140,19 @@ Al remover la dirección IP de administración **(192.168.1.11)** de la VLAN 1 n
  |![alt text](img/2.k_a.png) | ![alt text](img/2.k_b.png) |
 
 
-## 2.l
+## 2.l 
+ ![alt text](img/2L.png)
+
+ Con show vlan brief podemos observar que las VLANs laboratorio, bar, management estan creadas y activas. El puerto Fa 0/6 donde esta conectada la pc fue asignado a la VLAN Laboratorio mientras que el resto de puertos pertenecen a la VLAN 1
+ Con show ip interface brief vemos que los unicos puertos operativos son Fa0/1 y Fa0/6 ya que son los unicos puertos con dispositivos conectados, ademas podemos ver como la VLAN 1 se quedo sin ip porque la direccion de Management se paso a VLAN 99. Pero Vlan 99 tiene el protocolo en down, porque ningún puerto activo pertenece a la VLAN 99, así que el switch no es accesible por esa IP.
 
 ## 2.m
-
+![alt text](img/2M.png)
+En el segundo switch se crearon la VLAN laboratorio, bar y management y se asigno el puerto Fa0/18 donde esta conectado la segunfa pc, se repitio el inciso K , se le quito la ip a VLAN 1 y se configuro la direccion management en la VLAN 99.
+Con los comandos show vlan brief y show ip interface brief se verifico que el resultado es igual que en el switch 1 el puerto Fa0/18 aparece en la VLAN Laboratorio, los únicos puertos operativos son Fa0/1 y Fa0/18, y la VLAN 99 tiene la IP pero con el protocolo down
 ## 2.n
-
+![alt text](img/2N.png)
+![alt text](img/2NB.png)
 # 3. Simulacion de Red LAN a bordo
 
 **1. Topologia de Red**
@@ -163,6 +170,7 @@ Se segmento la red en tres areas con distintos privilegios:
 *   **Turista:** Ping exitoso y HTTP web a `10.10.99.10`. Ping a `8.8.8.8` denegado (Destination host unreachable).
 
 ![Nombre](./img/Turista1.png)
+
 ![Nombre](./img/Turista2.png)
 
 *   **Business:** HTTP web a `10.10.99.10` funcional y ping exitoso a `8.8.8.8`.

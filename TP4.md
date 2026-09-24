@@ -17,7 +17,22 @@
 ## Desarrollo
 
 # 1. 
+## 1.a
+Las redes pueden clasificarse según el área geográfica que abarcan:
+* **LAN (Local Area Network):** cubre un área reducida, como un edificio. Generalmente pertenece a una misma entidad y posee altas velocidades de transmision.
+* **MAN (Metropolitan Area Network):** posee un alcance intermedio entre una LAN y una WAN y puede abarcar una zona metropolitana.
+* **WAN (Wide Area Network):** cubre grandes extensiones geograficas y normalmente utiliza infraestructura de proveedores de telecomunicaciones.
 
+
+## 1.b
+Una vLAN (Virtual Local Area Network) permite dividir lógicamente una red LAN física en varias redes independientes. Cada vLAN constituye un dominio de broadcast diferente, por lo que las tramas broadcast de una vLAN no se propagan hacia las demás. Las vLAN pueden asignarse según distintos criterios, principalmente por puertos, dirección MAC, subred o protocolo.
+
+## 1.c 
+El estándar IEEE 802.1Q permite identificar a qué VLAN pertenece una trama Ethernet mediante la incorporación de una etiqueta VLAN de 4 bytes. Esta etiqueta se coloca después de la dirección MAC de origen de la trama.
+Su relación con las vLAN consiste en que permite transportar trafico de distintas vLAN por un mismo enlace, manteniendo identificada la vLAN a la que pertenece cada trama.
+
+## 1.d 
+El tagging es el proceso mediante el cual se agrega a una trama Ethernet una etiqueta VLAN definida por IEEE 802.1Q. La etiqueta permite que los switches identifiquen la VLAN a la que pertenece la trama. Es especialmente útil en enlaces entre switches que transportan simultáneamente tráfico de varias VLAN.
 
 # 2.
  La red consiste en dos computadoras (PC-A y PC-B) conectadas a través de dos switches (SW-1 y SW-2).

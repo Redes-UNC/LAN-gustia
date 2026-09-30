@@ -152,7 +152,12 @@ En el segundo switch se crearon la VLAN laboratorio, bar y management y se asign
 Con los comandos show vlan brief y show ip interface brief se verifico que el resultado es igual que en el switch 1 el puerto Fa0/18 aparece en la VLAN Laboratorio, los únicos puertos operativos son Fa0/1 y Fa0/18, y la VLAN 99 tiene la IP pero con el protocolo down
 ## 2.n
 ![alt text](img/2N.png)
+
 ![alt text](img/2NB.png)
+
+Se realizo un ping desde la PC-A a la PC-B. Antes de configurar las VLANs el ping funcionaba pero ahora falla, aunque las dos comparten VLAN el puerto que conecta los dos switches sigue en la VLAN 1 y un puerto de acceso solo transporta el trafico de una sola VLAN, por eso el tráfico no puede pasar de un switch al otro.
+
+También se realizó un ping desde sw1 hacia sw2  que fallo. Esto pasa porque las direcciones de Management están en la VLAN 99, que tiene el protocolo en down en los dos switches, ya que ningún puerto activo pertenece a esa VLAN.
 # 3. Simulacion de Red LAN a bordo
 
 **1. Topologia de Red**

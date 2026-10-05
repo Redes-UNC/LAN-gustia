@@ -64,13 +64,13 @@ Al cerrar el cliente TCP con Ctrl+C se generaron 4 segmentos: un FIN desde cada 
 
 ![alt text](img/CantPaquetes.png)
 
-![alt text](img/CantPaquetesUDP.png)
+![alt text](img/CantPaquetesUdp.png)
 
 En TCP se necesitaron 9 paquetes mientras que en UDP se necesito solo 1. Con los paquetes extra compramos confiabilidad y tranquilidad de que funcionó correctamente la transmisión de los datos
 
 ## 3F
 
-![alt text](img/cmd.png)
+![alt text](img/Cmd.png)
 
 
 ![alt text](img/WiresharkConexionre.png)

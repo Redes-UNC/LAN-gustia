@@ -76,3 +76,71 @@ En TCP se necesitaron 9 paquetes mientras que en UDP se necesito solo 1. Con los
 ![alt text](img/WiresharkConexionre.png)
 
 Al intentar conectarse por TCP a un puerto sin ningún proceso escuchando, el cliente mandó un SYN y el sistema respondió con un segmento RST-ACK, rechazando la conexión. Se intentó 4 veces más con el mismo resultado. En UDP, el cliente indicó que estaba conectado aunque nadie escuchaba; al enviar el datagrama, el sistema respondió con un Destino inalcanzable (Puerto inalcanzable).
+
+## 4.A a 4.C
+
+Inicialmente, se replicó el proceso detallado en las intrucciones del tp. Usando los scripts de python *tcp_server.py* y *tcp_client.py*, y wireshark, filtrando con *tcp.port == 12000* tendremos los siguientes resultados: 
+- Ejecutando **tcp_server**
+
+![alt text](img/4.a_1.png)
+
+- y posteriormente **tcp_client** (en este caso el mensaje quedó por defecto)
+
+![alt text](img/4.a_2.png)
+
+![alt text](img/4.a_3.png)
+
+Luego, podremos ver mediante el filtrado antes mencionado que: 
+
+![alt text](img/4.a.png)
+
+1. **Connect(): establecimiento de la conexión** 
+
+![alt text](img/4.d.png)
+
+*    a. El cliente envía un segmento con el flag [SYN].
+*    b. El servidor responde con [SYN, ACK].
+*    c. El cliente confirma con un [ACK].
+
+2. **Sendall(): Transferencia de datos**
+
+A continuación podremos ver los paquetes que contienen los mensajes reales. 
+
+![alt text](img/4.d_1.png)
+
+* a. Un paquete del cliente al servidor con los flags [PSH, ACK]. Acá se ve el texto "Hola servidor".
+
+![alt text](img/4.d_2.png)
+
+* b. Un [ACK] de respuesta del servidor (invisible en el código, lo manda el sistema operativo).
+
+![alt text](img/4.d_3.png)
+
+* c. Otro paquete [PSH, ACK] del servidor al cliente con la respuesta ("Recibido: Hola servidor...")
+
+![alt text](img/4.d_4.png)
+
+3. **Close(): cierre de la conexión**
+
+y por último, para el proceso de cierre observamos los siguientes: 
+
+![alt text](img/4.d_5.png)
+
+* a. Un segmento con el flag [FIN, ACK] del cliente hacia el servidor.
+* b. El servidor responde con un [ACK] y luego envía su propio [FIN, ACK].
+* c. El cliente envía el [ACK] final.
+
+## 4.D 
+
+Con lo observado en los incisos anteriores podemos dar la siguiente información: 
+
+| Llamada | ¿Donde se ejecuta? | ¿genera tráfico? | Segmentos que observan |
+| :--- | :---: | ---: | ---: |
+| socket() | Servidor y cliente | No | Ninguno. |
+| bind() | servidor | No | Ninguno. |
+| listen() | servidor | No | Ninguno. |
+| connect() | cliente | Si | Paquetes 32, 33 y 34. Se observa el Three-way handshake inicial con la secuencia de flags [SYN] en el paquete 32, [SYN, ACK] en el 33, y la confirmación [ACK] en el 34.  |
+| accept() | servidor | No | Ninguno. |
+| sendall() | servidor | Si | Paquetes 35, 36, 37. Se observan los segmentos con el flag [PSH, ACK] que transportan los datos. "Hola servidor" en el paquete 35, la respuesta "Recibido: Hola servidor" en el paquete 37,  y  Un [ACK] de respuesta del servidor en el 36|
+| recv() | servidor | No | Ninguno. |
+| close() | ambos | Si | Paquetes 39, 40, 41 y 42. Se observa el proceso de cierre ordenado con los segmentos que llevan el flag [FIN, ACK] enviados por ambos extremos (paquetes 39 y 41), intercalados con sus respectivas confirmaciones [ACK] (paquetes 40 y 42). |

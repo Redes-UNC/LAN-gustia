@@ -18,13 +18,18 @@
 
 
 
-# 1 ICMP y primer contacto con Wireshark.
+# 1. ICMP y primer contacto con Wireshark.
 
 
 
 
 
 
+
+
+
+
+### Averiguar la configuración de red de alguna de las computadoras del grupo: dirección IPv4, máscara, gateway por defecto y dirección MAC de la interfaz que usan (Wi-Fi o cableada).
 
 
 

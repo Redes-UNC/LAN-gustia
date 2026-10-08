@@ -20,13 +20,20 @@
 
 # 1. ICMP y primer contacto con Wireshark.
 
+### a) 
+ICMP (Internet Control Message Protocol) es un protocolo utilizado para transmitir mensajes de control e información sobre problemas de comunicación en la red IP. Este protocolo no se utiliza para transportar datos de aplicaciones como TCP o UDP, sino para intercambiar información de control relacionada con el funcionamiento de IP.
 
+### b)
+ICMP es un protocolo de la capa de red que trabaja de forma complementaria con IP. Aunque se considera del mismo nivel dentro de la arquitectura TCP/IP, actúa como usuario de IP y sus mensajes viajan dentro de IP, encapsulándose directamente en la carga útil del datagrama IP. El receptor reconoce que el contenido corresponde a ICMP mediante el campo Protocol de la cabecera IP, el cual lleva asignado el valor 1.
 
+### c)
+* **Ping:** Es una herramienta de diagnostico de red, permite comprobar si existe comunicación entre dos entidades de una red.
+* **Echo Request:** es el mensaje ICMP de eco que se envía al destino para verificar si responde.
+* **Echo Reply:** es la respuesta que debe devolver el receptor al recibir un mensaje de eco.
+* **Campos que permiten distinguirlos:** el campo Type de la cabecera ICMP identifica que clase de mensaje es. Tanto Echo Request como Echo Reply conservan el mismo identificador y numero de secuencia, lo que permite relacionar cada respuesta con su petición correspondiente.
 
-
-
-
-
+### d)
+Un mensaje ICMP de tipo Echo contiene campos Type, Code, suma de comprobación, identificador y numero de secuencia. El identificador permite reconocer una sesión particular y el numero de secuencia permite asociar cada petición con su respuesta correspondiente. Además, el mensaje puede incluir un campo de datos.
 
 
 ### Averiguar la configuración de red de alguna de las computadoras del grupo: dirección IPv4, máscara, gateway por defecto y dirección MAC de la interfaz que usan (Wi-Fi o cableada).

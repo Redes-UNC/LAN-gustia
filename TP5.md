@@ -91,7 +91,7 @@ El Identifier y el Sequence Number se mantienen porque ping los usa para asociar
 
 ### c) Payload
 
-El payload está dentro del mensaje ICMP, después de Identifier y Sequence Number. Tiene 32 bytes y contiene los caracteres `abcdefghijklmnopqrstuvwabcdefghi` (`6162636465666768696a6b6c6d6e6f7071727374757677616263646566676869`). En el Reply es exactamente igual, devuelve los mismos datos que recibió.
+El payload está dentro del mensaje ICMP, después de Identifier y Sequence Number. Tiene 32 bytes y contiene los caracteres `abcdefghijklmnopqrstuvwabcdefghi`. En el Reply es exactamente igual, devuelve los mismos datos que recibió.
 
 No se probó en otra computadora con Linux pero por lo general se sabe que suele enviar 56 bytes de datos lo que sugiere que el contenido del payload lo define cada implementación del SO, ya que el estándar solo exige que el Reply lo devuelva igual.
 
@@ -112,7 +112,7 @@ flowchart TB
       direction TB
       subgraph C["<b>Mensaje ICMP Echo Request: 40 bytes</b><br/>Encabezado: 8 bytes; tipo 8, código 0"]
         direction TB
-        P["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Payload de ping: 32 bytes</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>Datos: abcdefghijklmnopqrstuvwabcdefghi (letras del abecedario)"]
+        P["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Payload de ping: 32 bytes</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>Datos: abcdefghijklmnopqrstuvwabcdefghi"]
       end
     end
   end
@@ -123,7 +123,8 @@ flowchart TB
   style P fill:#FFFFFF,stroke:#999999,stroke-width:2px,color:#000
 ```
 
-Verificación: 14 + 20 + 8 + 32 = 74 bytes.
+
+
 
  # 3 TCP y UDP "a mano" con ncat
 

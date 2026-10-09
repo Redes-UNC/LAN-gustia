@@ -135,10 +135,36 @@ flowchart TB
   style P fill:#FFFFFF,stroke:#999999,stroke-width:2px,color:#000
 ```
 
+# 2 ARP: de una IP a una direccion MAC
 
+## 2 f
 
+| Campo                             | ARP Request                                     | ARP Reply                               |
+| --------------------------------- | ----------------------------------------------- | --------------------------------------- |
+| MAC destino (encabezado Ethernet) | `FF:FF:FF:FF:FF:FF` (broadcast)                 |  a8:e2:91:41:52:bf                      |
+| MAC origen (encabezado Ethernet)  |  a8:e2:91:41:52:bf                              |  28:77:77:8b:1b:9e                      |
+| Opcode                            | `1` (Request)                                   | `2` (Reply)                             |
+| Sender MAC address                |  a8:e2:91:41:52:bf                              |  28:77:77:8b:1b:9e                      |
+| Sender IP address                 | `192.168.1.10`                                  | `192.168.1.1` (gateway)                 |
+| Target MAC address                | `00:00:00:00:00:00`                             |  a8:e2:91:41:52:bf                      |
+| Target IP address                 | `192.168.1.1` (gateway)                         | `192.168.1.10` (equipo solicitante)     |
 
- # 3 TCP y UDP "a mano" con ncat
+## 2A
+El request va a una direccion broadcast (`FF:FF:FF:FF:FF:FF`), porque el equipo todavia desconoce la direccion MAC asociada a la IP de destino, por lo que necesita consultar a todos los dispositivos de la red local, en cambio el reply se debe enviar unicamente al equipo que realizo la solicitud. Target MAC adress tiene el valor `00:00:00:00:00:00` ya que el equipo que realiza es request todavia desconoce la direccion MAC correspondiente a la IP consultada.
+
+## 2B
+El encabezado de la trama ARP tiene valor del campo type ARP(0x0806), y no hay un encabezado IP. Esto es por que ARP opera entre la capa de enlace de datos y la capa de red, se utiliza para asociar direcciones IP con direcciones MAC unicamente en la red local.
+
+## 2C
+Con la opcion de realizar un ping a una direccion IP inexistente, se generaron 3 ARP request y no se recibio ningun ARP reply, ya que ningun equipo respondio a las solicitudes para identificarse mediante esa direccion IP.
+No apareció ningún ICMP Echo Request en la captura, porque el equipo no pudo obtener la dirección MAC de destino necesaria para construir la trama Ethernet y enviar el paquete IP. Por lo tanto, el ping no llegó a generar tráfico ICMP hacia esa dirección.
+
+## 2D
+
+Al realizar nuevamente el ping a la entrada del gateway no se generaron request ARP nuevas, ya que la direccion MAC del gateway sigue almacenada en cache ARP del equipo. En cambio realizar ping a una direccion IP inexistente si sigue generando request.
+La ventaja del cache ARP es no tener que volver a generar nuevas solicitudes ARP cada vez que se necesita enviar un paquete a un dispositivo cuya direccion MAC es ya conocida, reduciendo el trafico de red y los tiempos de espera. Pero, si una entrada queda desactualizada, el equipo podria enviar tramar a una direccion MAC incorrecta hasta que la entrada se actualice o expire.
+
+# 3 TCP y UDP "a mano" con ncat
 
 ## 3A
 Establecer una conexión significa que dos procesos se pongan de acuerdo antes de intercambiar datos, sincronizando sus números de secuencia iniciales y otros parámetros. Esto se realiza mediante los paquetes de sincronizacion y confirmación. Una conexion existe unicamente en los extremos, al establecerse cada entidad de transporte reserva recursos y lleva la cuenta de los segmentos enviados y recibidos. Los cables y los routers no guardan informacion de la conexion 

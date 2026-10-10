@@ -137,6 +137,36 @@ flowchart TB
 
 # 2 ARP: de una IP a una direccion MAC
 
+Como ping solo conoce la IP lógica de destino (Capa 3), el sistema operativo necesita averiguar la dirección física (MAC, Capa 2) asociada a esa IP para poder construir la trama Ethernet y enviarla por el cable o Wi-Fi. Esa MAC salió de un proceso de resolución interno que hace la computadora utilizando el protocolo y la caché ARP, como se especifica a continuación:
+
+## 2 a
+**ARP (Address Resolution Protocol)** resuelve el problema de encontrar la dirección MAC (física, de hardware) asociada a una dirección IP (lógica) específica dentro de una misma red local (LAN).
+
+Su ubicación en el modelo OSI es discutible y se lo suele considerar un protocolo "entre" la capa 2 (Enlace de datos) y la capa 3 (Red). Esto se debe a que los mensajes ARP no utilizan el protocolo IP ni tienen encabezado IP (se encapsulan directamente sobre Ethernet), pero su única finalidad es hacer posible el enrutamiento y funcionamiento del protocolo IP.
+
+## 2 b
+**ARP Request:** Es un mensaje de solicitud que pregunta, por ejemplo, "¿Quién tiene la IP 192.168.1.1? Avisen a la IP `192.168.1.20`". Se envía a una dirección MAC de Broadcast (`ff:ff:ff:ff:ff:ff`), lo que significa que el switch lo replica y le llega a todos los hosts de la red local.
+
+**ARP Reply:** Es la respuesta del equipo solicitado. Dice "Yo tengo la IP `192.168.1.1` y mi MAC es `b8:9f:cc:c1:4c:50`". A diferencia del Request, el Reply se envía de forma Unicast, es decir, va dirigido directamente a la MAC del host que hizo la pregunta.
+
+## 2 c
+La caché ARP es una tabla temporal en la memoria RAM del equipo que guarda los mapeos recientes de direcciones IP a direcciones MAC. Existe por una cuestión de rendimiento y eficiencia en la red: si la PC tuviera que enviar un ARP Request a toda la LAN (broadcast) por cada paquete que desea transmitir, saturaría la red con tráfico innecesario.
+
+## 2 d
+Para enviar una trama a una IP en la red local, primero me fijo en mi propia caché ARP local. Si la IP ya tiene una MAC asociada ahí, saco ese dato y armo la trama Ethernet directamente.
+
+Si la IP no está en mi caché, detengo por un momento el paquete y envío un ARP Request (broadcast) a toda la red preguntando qué MAC tiene esa IP.
+El equipo dueño de esa IP recibe el mensaje y me contesta con un ARP Reply (unicast) mostrandome su MAC.
+Guardo esa asociación (IP - MAC) en mi caché y coloco esa MAC de destino en el encabezado de mi trama Ethernet para realizar el envío.
+
+## 2 e
+Se ejecutó el comando para listar la tabla ARP en la consola de Windows (arp -a):
+Sí, ambas MAC coinciden. La dirección física asociada a la IP del gateway (`192.168.1.1`) en la tabla ARP es `b8-9f-cc-c1-4c-50`.
+
+![ARP-console](img/2e-ARP.jpg)
+
+Esta es la misma dirección MAC de destino (correspondiente al dispositivo HuaweiTechno) que capturó Wireshark en la capa Ethernet al momento de hacer el Echo Request a `8.8.8.8` en el punto 1. Esto comprueba de forma práctica que, para enviar un paquete a una IP externa (Internet), la computadora primero resolvió por ARP cuál era la MAC del router local (gateway) y le entregó la trama Ethernet a él.
+
 ## 2 f
 
 | Campo                             | ARP Request                                     | ARP Reply                               |

@@ -16,7 +16,12 @@
 
 ## Desarrollo
 
-# 1. 
+# Parte 1: Taller de armado y verificación de cables Cat5/Cat5e bajo estándar T568A/B.
+
+
+
+
+
 # Parte 2: Equipamiento físico, verificación y utilización de equipos de red y generación de tráfico.
 
 ## Levantar y testear una LAN
@@ -61,7 +66,6 @@ Nuestra computadora tenia la ip `192.168.1.10` y la otra la `192.168.1.11`
 
 Al recibir respuestas, se confirma que existe conectividad IP entre las dos computadoras en ese momento.
 
+## Desarrollar un pequeño servidor
 
 
-
-# 3.

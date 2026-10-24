@@ -47,11 +47,11 @@ La máscara `255.255.255.0` equivale a `/24`. Esto permite que las computadoras 
 
 Para que la comunicación funcione, cada computadora debe tener una dirección IP única dentro de la subred y una máscara compatible con la del resto de los equipos.
 
-La puerta de enlace predeterminada se utiliza para enviar paquetes hacia redes diferentes de la red local. Si la actividad se realiza únicamente entre computadoras conectadas al mismo switch, sin un router, no es necesaria para comunicarse entre ellas. Por lo tanto, no corresponde asignar una dirección de gateway ficticia.
+La puerta de enlace predeterminada se utiliza para enviar paquetes hacia redes diferentes de la red local. Al realizar la actividad únicamente entre computadoras conectadas al mismo switch, sin un router, no es necesaria para comunicarse entre ellas. Por lo tanto, no corresponde asignar una dirección de gateway ficticia.
 
 ## 2) 
 
-Una vez configuradas las interfaces de red, se conectó una computadora por grupo al switch TP-LINK mediante los cables armados
+Una vez configuradas las interfaces de red, se conectó una computadora por grupo al switch TP-LINK TL-SF1005D mediante los cables armados
 
 ### Verificación de conectividad mediante ping
 

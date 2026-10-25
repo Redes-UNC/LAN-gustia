@@ -66,15 +66,42 @@ Nuestra computadora tenia la ip `192.168.1.10` y la otra la `192.168.1.11`
 
 Al recibir respuestas, se confirma que existe conectividad IP entre las dos computadoras en ese momento.
 
+##  LAN: tráfico UDP
 
-## 5)
+1) **Receptor y Emisor UDP con ncat** 
+Una vez verificada la conectividad física (mediante ping), procedimos a establecer la comunicación mediante el protocolo UDP utilizando la herramienta ncat (utilizando los comandos especificados en la consola de comandos).   
 
+* En la computadora receptora (192.168.1.11), levantamos el servicio de escucha en el puerto asignado ejecutando en la terminal: *ncat -u -l 5000*.   
+* En la computadora emisora (192.168.1.10), iniciamos la transmisión mediante el comando: *ncat -u 192.168.1.11 5000*. Al redactar y presionar Enter, los mensajes fueron inyectados al medio físico. 
 
-### d) ¿UDP garantiza que los mensajes lleguen en el mismo orden en que fueron enviados? 
+![alt text](img/r_msg.jpeg)
+
+2) **Captura de Tráfico con Wireshark**
+Durante la transmisión de los mensajes, ejecutamos Wireshark en la interfaz Ethernet de la computadora receptora, aplicando el filtro de visualización udp.port == 5000. La captura evidenció el flujo de datagramas originados desde la IP .10 dirigidos hacia la IP .11. Al inspeccionar la sección de datos (payload) de los paquetes seleccionados, constatamos que la carga útil contenía en texto plano los mensajes exactos redactados en la terminal del emisor.
+
+![alt text](img/captura_trafico.png)
+
+---
+
+**Respuestas punto 5**
+
+* **a. ¿Se observa algún procedimiento de establecimiento de conexión antes de enviar los datos?**
+
+No. A diferencia de TCP, en nuestra captura no se observa ningún handshake previo. La PC emisora (.10) inyecta el datagrama UDP directamente a la red hacia el destino (.11) con el mensaje ya incluido desde el primer paquete.
+
+* **b. ¿Existe algún mecanismo de confirmación de recepción equivalente a los ACK de TCP?**
+
+No. En Wireshark se evidencia que la PC receptora (.11) procesa los datos pero no devuelve ningún paquete de confirmación (ACK) hacia la red. Al ser no fiable, UDP simplemente entrega el mensaje sin avisar si llegó con éxito.
+
+* **c. ¿Qué ocurre si se envían mensajes mientras el receptor UDP no está ejecutándose?**
+
+El emisor inyecta el datagrama de todas formas, pero al llegar a la PC receptora, el sistema operativo lo descarta porque el puerto 5000 está cerrado. Como respuesta, la PC receptora genera y devuelve automáticamente un paquete de error ICMP ("Destination Unreachable - Port Unreachable") para avisar que nadie está escuchando.
+
+* **d. ¿UDP garantiza que los mensajes lleguen en el mismo orden en que fueron enviados?** 
 
 No, UDP no tiene niguna garantia de que los mensajes lleguen en el mismo orden en el que fueron enviados, ya que no tiene numeros de secuencia, cada datagrama viaja por su cuenta, puede llegar duplicado, desordenado o no llegar.
 
-### e)¿Qué aplicaciones reales utilizan UDP y por qué? 
+* **e. ¿Qué aplicaciones reales utilizan UDP y por qué?** 
 
 Hay diversas aplicaiones de redes que utilzan UDP:
     

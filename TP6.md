@@ -66,6 +66,26 @@ Nuestra computadora tenia la ip `192.168.1.10` y la otra la `192.168.1.11`
 
 Al recibir respuestas, se confirma que existe conectividad IP entre las dos computadoras en ese momento.
 
+
+## 5)
+
+
+### d) ¿UDP garantiza que los mensajes lleguen en el mismo orden en que fueron enviados? 
+
+No, UDP no tiene niguna garantia de que los mensajes lleguen en el mismo orden en el que fueron enviados, ya que no tiene numeros de secuencia, cada datagrama viaja por su cuenta, puede llegar duplicado, desordenado o no llegar.
+
+### e)¿Qué aplicaciones reales utilizan UDP y por qué? 
+
+Hay diversas aplicaiones de redes que utilzan UDP:
+    
+VoIP, videollamadas y streaming en vivo: importa más la latencia que perder algún paquete, porque un paquete retransmitido llega tarde y ya no sirve.
+
+Juegos online: siempre vale más el estado más reciente que uno viejo retransmitido.
+
+DNS: son consultas cortas de ida y vuelta, y un handshake de TCP costaría más que la consulta misma.
+
+DHCP: el cliente todavía no tiene IP, así que usa broadcast, algo que TCP no permite.
+
 ## Desarrollar un pequeño servidor
 
 

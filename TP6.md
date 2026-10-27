@@ -29,8 +29,8 @@ El procedimiento de armado fue el siguiente:
 6. Usamos una pinza crimpeadora para fijar el conector al cable y asegurar el contacto electrico de los conductores.
 7. Repetimos el procedimiento para el otro extremo del cable.
 
-<img src="img/CableDeRed1.png" width="400" height="400">
-<img src="img/CableDeRed2.png" width="400" height="400">
+<img src="img/cableDeRed1.jpeg" width="400" height="400">
+<img src="img/CableDeRed2.jpeg" width="400" height="400">
 
 # Parte 2: Equipamiento físico, verificación y utilización de equipos de red y generación de tráfico.
 

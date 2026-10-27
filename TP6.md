@@ -25,7 +25,7 @@ El procedimiento de armado fue el siguiente:
 2. Retiramos unos 2 cm de la aislacion externa del cable.
 3. Destrenzamos y acomodamos los ochos conductores siguiendo el orden de colores correspondientes al estandar T568B.
 4.  Emparejamos los extremos de los conductores para que tengan la misma longitud.
-5. Insertamos los conductores dentro del conectar, vetificando que cada uno llegue hasta el fondo y se mantenja el orden establecido.
+5. Insertamos los conductores dentro del conectar, vetificando que cada uno llegue hasta el fondo y se mantenga el orden establecido.
 6. Usamos una pinza crimpeadora para fijar el conector al cable y asegurar el contacto electrico de los conductores.
 7. Repetimos el procedimiento para el otro extremo del cable.
 

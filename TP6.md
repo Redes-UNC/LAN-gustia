@@ -18,9 +18,19 @@
 
 # Parte 1: Taller de armado y verificación de cables Cat5/Cat5e bajo estándar T568A/B.
 
+Para realizar el armado del cable de red, investigamos el procedimiento de crimpado de cables Ethernet cat5 segun el estandar T568B. Este estandar establece el orden de los ocho conductores dentro del conector RJ45. Para construir un cable derecho, se debe utilizar el mismo estandar en ambos extremos.
 
+El procedimiento de armado fue el siguiente:
+1. Cortamos el cable de red de aproximadamente 1,5 metros.
+2. Retiramos unos 2 cm de la aislacion externa del cable.
+3. Destrenzamos y acomodamos los ochos conductores siguiendo el orden de colores correspondientes al estandar T568B.
+4.  Emparejamos los extremos de los conductores para que tengan la misma longitud.
+5. Insertamos los conductores dentro del conectar, vetificando que cada uno llegue hasta el fondo y se mantenja el orden establecido.
+6. Usamos una pinza crimpeadora para fijar el conector al cable y asegurar el contacto electrico de los conductores.
+7. Repetimos el procedimiento para el otro extremo del cable.
 
-
+<img src="img/CableDeRed1.png" width="400" height="400">
+<img src="img/CableDeRed2.png" width="400" height="400">
 
 # Parte 2: Equipamiento físico, verificación y utilización de equipos de red y generación de tráfico.
 

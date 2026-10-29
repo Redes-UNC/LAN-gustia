@@ -32,6 +32,42 @@ El procedimiento de armado fue el siguiente:
 <img src="img/cableDeRed1.jpeg" width="400" height="400">
 <img src="img/CableDeRed2.jpeg" width="400" height="400">
 
+
+## 3) Verificación del cable
+Para evaluar la calidad constructiva y eléctrica de los cables confeccionados durante el laboratorio, intercambiamos nuestro cable con el grupo WAN-direction.
+
+### Inspección visual
+Se examinaron ambos conectores RJ45 del cable recibido, considerando la disposición de los conductores, el estado de los contactos y la terminación mecánica. 
+
+**Aspectos observados**
+   
+- **Estado de los conectores:** ambos presentan sus ocho contactos metálicos, sin daños evidentes.
+
+- **Disposición de los conductores:** se distinguen los 8 conductores en ambos extremos, dispuestos según la secuencia de colores del estándar T568B.
+
+- **Protección mecánica:** ambos conectores cuentan con protectores plásticos que cubren la unión entre el cable y el conector, ayudando a reducir los esfuerzos de flexión sobre la zona de terminación y a proteger la pestaña de retención del conector RJ45.
+
+**Registro fotográfico:**
+
+<img src="img/cableWAN-direction.jpg" width="400" alt="Cable del grupo WAN-Direction">
+
+**Verificación eléctrica:** 
+
+Luego de la inspección visual, conectamos ambos extremos del cable recibido al tester Ethernet para comprobar la continuidad y correspondencia eléctrica de sus ocho conductores.
+
+Durante la prueba se observó el encendido secuencial de los indicadores LED del 1 al 8 en ambos módulos del tester, sin interrupciones ni alteraciones visibles en la secuencia.
+
+Este resultado indica que los ocho conductores presentan continuidad y que no se detectaron errores de correspondencia mediante el comprobador utilizado.
+
+
+### Registro visual de la verificación eléctrica 
+
+| Grupo LAN-gustia | Grupo WAN-direction |
+|:---:|:---:|
+| [Ver video de LAN-gustia](videos/TestLAN-gustia.mp4) | [Ver video de WAN-Direction](videos/testWAN-direction.mp4) |
+| Verificación eléctrica del cable propio | Verificación eléctrica del cable intercambiado |
+
+
 # Parte 2: Equipamiento físico, verificación y utilización de equipos de red y generación de tráfico.
 
 ## Levantar y testear una LAN

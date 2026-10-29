@@ -149,7 +149,7 @@ No, UDP no tiene niguna garantia de que los mensajes lleguen en el mismo orden e
 
 * **e. ¿Qué aplicaciones reales utilizan UDP y por qué?** 
 
-Hay diversas aplicaiones de redes que utilzan UDP:
+Hay diversas aplicaciones de redes que utilzan UDP:
     
 VoIP, videollamadas y streaming en vivo: importa más la latencia que perder algún paquete, porque un paquete retransmitido llega tarde y ya no sirve.
 
@@ -161,4 +161,39 @@ DHCP: el cliente todavía no tiene IP, así que usa broadcast, algo que TCP no p
 
 ## Desarrollar un pequeño servidor
 
+**1)** Se montó un servidor web básico en la computadora emisora (192.168.1.10) utilizando Python (`python3 -m http.server 8000`), alojando un directorio con tres tipos de archivos diferentes (.txt, .pdf, .jpg).
 
+**Transferencia de archivos:**
+
+Podemos ver desde la terminal de la computadora emisora, tanto el comando para crear el servidor, como la conexion exitosa con la computadora receptora. Tambien se oberva las peticiones `GET` de descarga.
+
+![Terminal de la computadora emisora](img/Creacion_servidor_descargas.jpeg)
+
+**2)** Desde la computadora receptora (192.168.1.11), se realizo la descarga exitosa a través del navagador:
+
+ **Vía Navegador Web** 
+
+ ![Captura del navegador accediendo al index del servidor](img/Index_del_servidor.jpeg)
+
+**3)** Se repitio el proceso de descarga pero desde la terminal:
+
+ **Vía Terminal (curl)** `curl -O http://192.168.1.10:8000/documento.pdf`
+
+ ![Captura de la terminal ejecutando curl](img/Descarga_curl.jpeg)
+
+**Análisis del Tráfico Capturado:**
+
+**4)** Al capturar este proceso con Wireshark, el tráfico observado es distinto de la prueba anterior. Se trata de tráfico **TCP (Capa de Transporte)** transportando datos **HTTP (Capa de Aplicación)**.
+
+![Captura de Wireshark filtrando la conexión TCP/HTTP](img/Captura_wireshark_archivos.jpeg)
+
+A diferencia de UDP, aquí notamos un protocolo orientado a la conexión:
+
+**3-Way Handshake:** Previo a cualquier transferencia de datos, se observan los paquetes de sincronización entre cliente y servidor (`SYN`, `SYN-ACK`, `ACK`).
+
+**Petición de Aplicación:** Se visualiza el paquete con el método `HTTP GET`.
+
+**Transferencia confiable:** El archivo viaja segmentado en múltiples paquetes TCP, intercalados constantemente con respuestas `ACK` del cliente que confirman la recepción exitosa de cada segmento, garantizando así la integridad y el orden de los datos.
+
+> **Observación:**
+> Dejamos aclarado que no realizamos la actividad opcional correspondiente a la Parte 2 (análisis del switch Cisco Catalyst), ya que priorizamos el tiempo de ejecución en el armado del cable normado Cat5/Cat5e, la configuración de la red física y la captura de tráfico.

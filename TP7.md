@@ -161,3 +161,124 @@ S = 4 * S4 + 2 * S2 + S1
 Por ejemplo, si el síndrome es 5, significa que el error está en la posición 5. El receptor invierte ese bit para recuperar la palabra original.
 
 Este procedimiento permite corregir automáticamente un error de un solo bit por bloque.
+
+###  Aplicación al payload del desafío
+
+Una vez recuperado el mensaje mediante el procedimiento de paridad matricial, aplicamos Hamming (7,4) para preparar una nueva transmisión del contenido corregido.
+
+El enlace recuperado fue:
+
+`https://youtube.com/shorts/q8WgKzJwPa4?feature=share`
+
+Para conservar la estructura original del payload, también se mantienen los cuatro espacios finales que completaban los 56 caracteres transmitidos.
+
+Cada carácter se representa mediante su código ASCII de 7 bits. De esta manera, se obtiene nuevamente una secuencia de 392 bits.
+
+La secuencia se divide en bloques consecutivos de cuatro bits:
+
+```text
+392 / 4 = 98 bloques
+```
+
+Cada bloque de cuatro bits se transforma en una palabra de siete bits:
+
+```text
+98 * 7 = 686 bits
+```
+
+Por lo tanto, el resultado está compuesto por 392 bits de datos y 294 bits adicionales de paridad.
+
+### 4.5. Cálculo de un bloque de ejemplo
+
+Tomamos los primeros cuatro bits del payload corregido:
+
+```text
+Datos: 1101
+```
+
+Su distribución es:
+
+| Posición | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|---|---|---|---|---|---|---|---|
+| Contenido | P1 | P2 | D1 | P4 | D2 | D3 | D4 |
+| Valor | ? | ? | 1 | ? | 1 | 0 | 1 |
+
+Calculamos los bits de paridad:
+
+```text
+P1 = 1 XOR 1 XOR 1 = 1
+P2 = 1 XOR 0 XOR 1 = 0
+P4 = 1 XOR 0 XOR 1 = 0
+```
+
+La palabra resultante queda:
+
+```text
+P1 P2 D1 P4 D2 D3 D4
+
+1  0  1  0  1  0  1
+```
+
+Por lo tanto, el bloque `1101` se codifica como:
+
+`1010101`
+
+### Resultado de la codificación
+
+Repitiendo el procedimiento anterior sobre los 98 bloques del payload corregido, obtenemos las siguientes palabras Hamming.
+
+Cada celda muestra el bloque original de cuatro bits y, a continuación, su correspondiente palabra codificada de siete bits.
+
+| Bloques 1 a 7 | | | | | | |
+|---|---|---|---|---|---|---|
+| 1101 → 1010101 | 0001 → 1101001 | 1101 → 1010101 | 0011 → 1000011 | 1010 → 1011010 | 0111 → 0001111 | 0000 → 0000000 |
+| 1110 → 0010110 | 0110 → 1100110 | 1110 → 0010110 | 1001 → 0011001 | 0111 → 0001111 | 1010 → 1011010 | 1111 → 1111111 |
+| 1111 → 1111111 | 0011 → 1000011 | 1011 → 0110011 | 1111 → 1111111 | 1010 → 1011010 | 1111 → 1111111 | 0100 → 1001100 |
+| 1110 → 0010110 | 1011 → 0110011 | 1000 → 1110000 | 1011 → 0110011 | 0010 → 0101010 | 1010 → 1011010 | 1110 → 0010110 |
+| 1100 → 0111100 | 0111 → 0001111 | 1011 → 0110011 | 1111 → 1111111 | 0110 → 1100110 | 1010 → 1011010 | 1111 → 1111111 |
+| 1110 → 0010110 | 0111 → 0001111 | 1010 → 1011010 | 0011 → 1000011 | 0111 → 0001111 | 1111 → 1111111 | 0010 → 0101010 |
+| 1110 → 0010110 | 1001 → 0011001 | 1100 → 0111100 | 1101 → 1010101 | 0111 → 0001111 | 1111 → 1111111 | 0001 → 1101001 |
+| 0111 → 0001111 | 0001 → 1101001 | 0101 → 0100101 | 1111 → 1111111 | 0011 → 1000011 | 1100 → 0111100 | 1011 → 0110011 |
+| 1111 → 1111111 | 0101 → 0100101 | 0010 → 0101010 | 1011 → 0110011 | 1011 → 0110011 | 1101 → 1010101 | 0000 → 0000000 |
+| 1100 → 0111100 | 0010 → 0101010 | 1101 → 1010101 | 0001 → 1101001 | 1111 → 1111111 | 1110 → 0010110 | 0110 → 1100110 |
+| 1100 → 0111100 | 1011 → 0110011 | 1000 → 1110000 | 0111 → 0001111 | 1010 → 1011010 | 0111 → 0001111 | 0101 → 0100101 |
+| 1110 → 0010110 | 0101 → 0100101 | 1001 → 0011001 | 0101 → 0100101 | 1110 → 0010110 | 1111 → 1111111 | 0011 → 1000011 |
+| 1101 → 1010101 | 0001 → 1101001 | 1000 → 1110000 | 0111 → 0001111 | 1001 → 0011001 | 0110 → 1100110 | 0101 → 0100101 |
+| 0100 → 1001100 | 0000 → 0000000 | 1000 → 1110000 | 0001 → 1101001 | 0000 → 0000000 | 0010 → 0101010 | 0000 → 0000000 |
+
+Al concatenar las 98 palabras de siete bits se obtiene una secuencia codificada de 686 bits, que constituye el nuevo payload protegido mediante Hamming (7,4).
+
+```text
+1010101110100110101011000011101101000011110000000
+0010110110011000101100011001000111110110101111111
+1111111100001101100111111111101101011111111001100
+0010110011001111100000110011010101010110100010110
+0111100000111101100111111111110011010110101111111
+0010110000111110110101000011000111111111110101010
+0010110001100101111001010101000111111111111101001
+0001111110100101001011111111100001101111000110011
+1111111010010101010100110011011001110101010000000
+0111100010101010101011101001111111100101101100110
+0111100011001111100000001111101101000011110100101
+0010110010010100110010100101001011011111111000011
+1010101110100111100000001111001100111001100100101
+1001100000000011100001101001000000001010100000000
+```
+
+
+### Comparación con la paridad matricial
+
+Ambos mecanismos agregan redundancia para detectar errores, pero trabajan de manera diferente.
+
+La paridad matricial organiza los bits en filas y columnas. Cuando se produce un error simple en un bit de datos, la fila y la columna correspondientes presentan una paridad incorrecta. Su intersección permite localizarlo. Sin embargo, cuando aparecen varios errores, pueden existir distintas combinaciones de posiciones que expliquen las paridades fallidas, por lo que la corrección puede resultar ambigua.
+Hamming (7,4), en cambio, divide los datos en bloques independientes. Cada bloque contiene sus propios bits de control y puede corregir un error simple sin depender del resto de la secuencia.
+
+Una diferencia importante es que Hamming permite realizar correcciones locales: un error en un bloque no impide corregir otro bloque que también tenga un error, siempre que haya como máximo uno en cada bloque.
+
+Existe también una variante denominada Hamming extendido (8,4), que agrega un cuarto bit de paridad global y permite detectar hasta dos errores por bloque y corregir uno.
+
+### Conclusión
+
+La aplicación de Hamming (7,4) permite agregar redundancia a los datos recuperados del desafío y preparar una nueva transmisión con capacidad de corrección de errores simples. Mientras que la paridad matricial permite detectar y localizar errores mediante la relación entre filas y columnas, Hamming utiliza bits de control distribuidos en cada bloque para identificar la posición del bit incorrecto.
+
+Por lo tanto, ambos mecanismos pueden complementarse: la paridad matricial permite recuperar el payload del desafío y Hamming puede utilizarse posteriormente para protegerlo durante una nueva transmisión.

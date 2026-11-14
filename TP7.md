@@ -78,6 +78,227 @@ No sirve: si una palabra no existe, el lector se da cuenta; una contraseña, un 
 
 El código agrega una redundancia pensada para esto, que no depende del significado del mensaje. Detecta el error con cualquier tipo de dato, indica la fila y la columna del bit equivocado y permite corregirlo sin pedir que se reenvíe el mensaje.
 
-### 3. 
+### 3 ¿Pudieron confirmar que su corrección es correcta? ¿Cómo?
+Sí, pudimos validar la corrección mediante dos verificaciones técnicas complementarias:
 
-### 4. 
+- Recálculo de la matriz de paridad (síndrome nulo): Una vez identificadas las tres filas y las tres columnas con discrepancias, evaluamos las seis combinaciones posibles de corrección, invirtiendo los bits correspondientes. Mediante el script paridad.py, recalculamos las paridades de filas y columnas y las comparamos con los valores originales del campo CHECK. La combinación seleccionada no presentó discrepancias, cumpliendo con todas las condiciones de paridad del esquema bidimensional.
+
+- Verificación de la decodificación del mensaje: Posteriormente, utilizamos el script decodificar_mensaje.py para reconstruir el contenido original a partir de los bits corregidos. Obtuvimos el enlace https://youtube.com/shorts/q8WgKzJwPa4?feature=share, que permitió identificar las alteraciones presentes en el mensaje recibido y comprobar la coherencia del resultado obtenido.
+
+De esta manera, combinando la verificación matemática de las paridades con la decodificación del contenido, consideramos que la corrección seleccionada es consistente con los datos transmitidos.
+
+### 4. Investigar y describir con el mayor detalle posible cómo funciona la técnica de corrección Hamming (7,4) y por qué es superior a la demostración didáctica que hicimos en este Laboratorio. Luego, aplicar la técnica sobre la carga útil obtenida en el desafío y elaborar un paquete de datos que podrían transmitir para que, en caso de corrupción, pueda ser recuperado.
+
+El código Hamming (7,4) es un mecanismo de detección y corrección de errores utilizado en sistemas de comunicación y almacenamiento digital. Su objetivo es agregar información redundante a los datos originales para poder identificar y corregir errores producidos durante la transmisión.
+
+Se denomina Hamming (7,4) porque cada bloque de 4 bits de información se transforma en una palabra de 7 bits, incorporando 3 bits adicionales de paridad.
+
+Por lo tanto:
+
+- 4 bits corresponden a los datos originales.
+- 3 bits corresponden a los bits de control o paridad.
+- 7 bits conforman la palabra codificada que se transmite.
+
+#### Distribución de los bits
+
+Los bits se ubican en siete posiciones. Las posiciones que son potencias de dos se reservan para los bits de paridad: 1, 2 y 4. Las restantes contienen los datos.
+
+| Posición | Contenido |
+|---|---|
+| 1 | P1 |
+| 2 | P2 |
+| 3 | D1 |
+| 4 | P4 |
+| 5 | D2 |
+| 6 | D3 |
+| 7 | D4 |
+
+Se utiliza paridad par, por lo que cada grupo controlado debe contener una cantidad par de bits en estado 1.
+
+#### Cálculo de los bits de paridad
+
+Cada bit de paridad controla un conjunto determinado de posiciones:
+
+- P1 controla las posiciones 1, 3, 5 y 7.
+- P2 controla las posiciones 2, 3, 6 y 7.
+- P4 controla las posiciones 4, 5, 6 y 7.
+
+Los valores se calculan mediante operaciones XOR:
+
+\[
+P_1=D_1\oplus D_2\oplus D_4
+\]
+
+\[
+P_2=D_1\oplus D_3\oplus D_4
+\]
+
+\[
+P_4=D_2\oplus D_3\oplus D_4
+\]
+
+La operación XOR devuelve 1 cuando los dos valores comparados son diferentes y 0 cuando son iguales.
+
+#### Detección y corrección de errores
+
+Cuando el receptor recibe una palabra de siete bits, vuelve a calcular las tres condiciones de paridad. Los resultados se denominan síndrome y permiten identificar la posición del posible bit incorrecto.
+
+Se calculan:
+
+\[
+S_1=P_1\oplus D_1\oplus D_2\oplus D_4
+\]
+
+\[
+S_2=P_2\oplus D_1\oplus D_3\oplus D_4
+\]
+
+\[
+S_4=P_4\oplus D_2\oplus D_3\oplus D_4
+\]
+
+El síndrome se interpreta como un número binario, donde \(S_4\) es el bit más significativo y \(S_1\) el menos significativo:
+
+\[
+S=4S_4+2S_2+S_1
+\]
+
+- Si el resultado es 0, no se detecta ningún error.
+- Si el resultado está entre 1 y 7, indica la posición del bit que debe invertirse.
+
+Por ejemplo, si el síndrome es 5, significa que el error está en la posición 5. El receptor invierte ese bit para recuperar la palabra original.
+
+Este procedimiento permite corregir automáticamente un error de un solo bit por bloque.
+
+#### ¿Por qué es superior a la técnica de paridad bidimensional del laboratorio?
+
+La técnica de paridad bidimensional permite detectar errores mediante el cruce de filas y columnas. Sin embargo, cuando se producen varios errores simultáneos, pueden aparecer múltiples combinaciones posibles de corrección, lo que dificulta determinar cuáles son los bits originales.
+
+Hamming (7,4) presenta una ventaja porque permite localizar y corregir automáticamente un error de un bit en cada bloque de siete bits, sin depender del significado del mensaje ni de su interpretación.
+
+Otra ventaja es que trabaja con bloques independientes. Por ejemplo, si se producen errores en dos bloques distintos, siempre que haya un solo bit incorrecto en cada uno, ambos pueden corregirse individualmente.
+
+Sin embargo, el código Hamming (7,4) básico también tiene limitaciones: puede corregir un error por bloque, pero no garantiza la recuperación cuando hay dos o más errores dentro del mismo bloque. Para mejorar la detección de errores múltiples se utiliza una variante extendida, como Hamming (8,4), que incorpora un bit adicional de paridad global.
+
+#### Aplicación de Hamming (7,4) a la carga útil obtenida
+
+Para aplicar esta técnica al desafío, tomamos como referencia el mensaje reconstruido mediante el procedimiento de paridad bidimensional:
+
+```text
+https://youtube.com/shorts/q8WgKzJwPa4?feature=share
+```
+
+**1. Conversión del mensaje a binario**
+
+Convertimos cada carácter del mensaje a su representación ASCII de 7 bits.
+
+El enlace contiene 52 caracteres. Para conservar la estructura original de 8 filas por 7 caracteres, completamos los cuatro espacios restantes con caracteres de relleno.
+
+De esta manera, obtenemos:
+
+\[
+56 \times 7 = 392 \text{ bits}
+\]
+
+**2. División en bloques**
+
+Dividimos los 392 bits en grupos de cuatro bits, que serán procesados individualmente por el codificador Hamming.
+
+\[
+392/4=98 \text{ bloques}
+\]
+
+**3. Codificación y generación de redundancia**
+
+Cada bloque de cuatro bits se transforma en una palabra de siete bits, agregando los tres bits de paridad calculados anteriormente.
+
+Por lo tanto, el mensaje resultante tendrá:
+
+\[
+98 \times 7 = 686 \text{ bits}
+\]
+
+Esto significa que se agregan 294 bits de redundancia para permitir la detección y corrección de errores.
+
+**4. Estructura del paquete de datos**
+
+Proponemos transmitir un paquete con formato JSON, manteniendo una estructura similar a la utilizada en el desafío original:
+
+```json
+{
+  "COD": "HAMMING(7,4)",
+  "SIZE": "8,7",
+  "LEN": 392,
+  "PAD": 4,
+  "PL": "SECUENCIA DE 686 BITS CODIFICADOS"
+}
+```
+
+Donde:
+
+- `COD`: identifica el método de codificación utilizado.
+- `SIZE`: indica las dimensiones originales del mensaje.
+- `LEN`: indica la cantidad de bits originales.
+- `PAD`: indica la cantidad de caracteres de relleno agregados.
+- `PL`: contiene los 686 bits resultantes de la codificación Hamming.
+
+**5. Recuperación del mensaje en el receptor**
+
+Cuando el receptor recibe el paquete, divide el campo `PL` en bloques de siete bits y calcula el síndrome de cada uno.
+
+Si detecta un único bit incorrecto, identifica su posición y lo invierte para recuperar el bloque original. Luego extrae los cuatro bits de datos de cada bloque y reconstruye la secuencia original.
+
+Finalmente, agrupa los bits recuperados de a siete, los convierte nuevamente a caracteres ASCII y elimina los cuatro caracteres de relleno, obteniendo el mensaje original.
+
+#### Código Python para generar el paquete
+
+El siguiente código permite generar el campo `PL` real de 686 bits:
+
+```python
+import json
+
+mensaje = "https://youtube.com/shorts/q8WgKzJwPa4?feature=share"
+
+# Completar hasta 56 caracteres
+mensaje += " " * 4
+
+# Convertir a ASCII de 7 bits
+bits = ''.join(format(ord(c), '07b') for c in mensaje)
+
+def hamming74(datos):
+    b = [0] * 8
+
+    b[3], b[5], b[6], b[7] = map(int, datos)
+
+    b[1] = b[3] ^ b[5] ^ b[7]
+    b[2] = b[3] ^ b[6] ^ b[7]
+    b[4] = b[5] ^ b[6] ^ b[7]
+
+    return ''.join(map(str, b[1:]))
+
+# Codificar los 98 bloques
+codificado = ''.join(
+    hamming74(bits[i:i+4])
+    for i in range(0, len(bits), 4)
+)
+
+paquete = {
+    "COD": "HAMMING(7,4)",
+    "SIZE": "8,7",
+    "LEN": len(bits),
+    "PAD": 4,
+    "PL": codificado
+}
+
+print(json.dumps(paquete, indent=2))
+```
+
+#### Conclusión
+
+La aplicación de Hamming (7,4) permite mejorar la confiabilidad de la transmisión, ya que incorpora información redundante que posibilita corregir automáticamente errores individuales en cada bloque.
+
+En nuestro caso, los 392 bits correspondientes al mensaje original se transforman en 686 bits codificados. Si durante la transmisión se modifica un único bit de cualquiera de los bloques, el receptor puede identificar su posición y corregirlo sin necesidad de solicitar una retransmisión.
+
+Si bien requiere transmitir una mayor cantidad de información, ofrece una ventaja importante frente al método de paridad bidimensional utilizado en el laboratorio: permite corregir errores de manera independiente en cada bloque, sin depender de la interpretación del contenido recibido.
+
+**Aclaración:** este procedimiento aplica Hamming al mensaje ya reconstruido, porque el mensaje original de la captura no fue transmitido con Hamming (7,4). Es una propuesta de cómo podría haberse protegido el mensaje en una nueva transmisión.

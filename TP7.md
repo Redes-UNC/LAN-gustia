@@ -124,3 +124,40 @@ Cada bit de paridad controla un conjunto determinado de posiciones:
 - P4 controla las posiciones 4, 5, 6 y 7.
 
 Los valores se calculan mediante operaciones XOR:
+
+```text
+P1 = D1 XOR D2 XOR D4
+
+P2 = D1 XOR D3 XOR D4
+
+P4 = D2 XOR D3 XOR D4
+```
+
+La operación XOR devuelve 1 cuando los dos valores comparados son diferentes y 0 cuando son iguales.
+
+#### Detección y corrección de errores
+
+Cuando el receptor recibe una palabra de siete bits, vuelve a calcular las tres condiciones de paridad. Los resultados se denominan síndrome y permiten identificar la posición del posible bit incorrecto.
+
+Se calculan:
+
+```text
+S1 = P1 XOR D1 XOR D2 XOR D4
+
+S2 = P2 XOR D1 XOR D3 XOR D4
+
+S4 = P4 XOR D2 XOR D3 XOR D4
+```
+
+El síndrome se interpreta como un número binario, donde S4 es el bit más significativo y S1 el menos significativo:
+
+```text
+S = 4 * S4 + 2 * S2 + S1
+```
+
+- Si el resultado es 0, no se detecta ningún error.
+- Si el resultado está entre 1 y 7, indica la posición del bit que debe invertirse.
+
+Por ejemplo, si el síndrome es 5, significa que el error está en la posición 5. El receptor invierte ese bit para recuperar la palabra original.
+
+Este procedimiento permite corregir automáticamente un error de un solo bit por bloque.
